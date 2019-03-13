@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "e8fb07a96fb5eb03c0fd",
+    "revision": "933338f49ac5ce601744",
     "url": "/code-hero/static/css/main.10646ebd.chunk.css"
   },
   {
-    "revision": "e8fb07a96fb5eb03c0fd",
-    "url": "/code-hero/static/js/main.c54c8c54.chunk.js"
+    "revision": "933338f49ac5ce601744",
+    "url": "/code-hero/static/js/main.43cd34dc.chunk.js"
   },
   {
     "revision": "6561509a09ef762987df",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/code-hero/static/media/ironman.aad58208.jpg"
   },
   {
-    "revision": "f289abc237ec653841b4d3e559fd5a1f",
+    "revision": "3600e60369889ff4f92f39e3752c66d5",
     "url": "/code-hero/index.html"
   }
 ];
