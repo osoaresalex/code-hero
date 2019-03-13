@@ -1,14 +1,14 @@
 {
-  "main.css": "/code-hero/static/css/main.cb08d95f.chunk.css",
-  "main.js": "/code-hero/static/js/main.5d2bc7aa.chunk.js",
-  "main.js.map": "/code-hero/static/js/main.5d2bc7aa.chunk.js.map",
+  "main.css": "/code-hero/static/css/main.10646ebd.chunk.css",
+  "main.js": "/code-hero/static/js/main.c54c8c54.chunk.js",
+  "main.js.map": "/code-hero/static/js/main.c54c8c54.chunk.js.map",
   "runtime~main.js": "/code-hero/static/js/runtime~main.79f0f47e.js",
   "runtime~main.js.map": "/code-hero/static/js/runtime~main.79f0f47e.js.map",
-  "static/js/2.948d4d77.chunk.js": "/code-hero/static/js/2.948d4d77.chunk.js",
-  "static/js/2.948d4d77.chunk.js.map": "/code-hero/static/js/2.948d4d77.chunk.js.map",
+  "static/js/2.3ae09916.chunk.js": "/code-hero/static/js/2.3ae09916.chunk.js",
+  "static/js/2.3ae09916.chunk.js.map": "/code-hero/static/js/2.3ae09916.chunk.js.map",
   "index.html": "/code-hero/index.html",
-  "precache-manifest.115441f194fe23ffdbfae8fd73e80184.js": "/code-hero/precache-manifest.115441f194fe23ffdbfae8fd73e80184.js",
+  "precache-manifest.d447ed429f2a6329c62787c1d721856b.js": "/code-hero/precache-manifest.d447ed429f2a6329c62787c1d721856b.js",
   "service-worker.js": "/code-hero/service-worker.js",
-  "static/css/main.cb08d95f.chunk.css.map": "/code-hero/static/css/main.cb08d95f.chunk.css.map",
-  "static/media/logo.svg": "/code-hero/static/media/logo.5d5d9eef.svg"
+  "static/css/main.10646ebd.chunk.css.map": "/code-hero/static/css/main.10646ebd.chunk.css.map",
+  "static/media/ironman.jpg": "/code-hero/static/media/ironman.aad58208.jpg"
 }
