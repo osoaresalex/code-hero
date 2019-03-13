@@ -1,0 +1,15 @@
+ .title {
+     font-size: 27px;
+     line-height: 1.2;
+ }
+
+ .title__bar {
+     height: 4px;
+     width: 54px;
+ }
+
+ .page-title {
+     display: flex;
+     flex-direction: row;
+ }
+

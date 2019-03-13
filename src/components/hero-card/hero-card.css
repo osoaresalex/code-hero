@@ -1,0 +1,18 @@
+.hero-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.hero-card__image {
+    margin-right: 25px;
+    width: 58px;
+    height: 58px;
+    border-radius: 300px;
+}
+
+.hero-card__name {
+    font-size: 21px;
+    line-height: 1.1;
+}
+

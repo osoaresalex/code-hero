@@ -1,0 +1,25 @@
+.paginator {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-number {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #d42026;
+    border-radius: 300px;
+    font-size: 21px;
+    line-height: 1.1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.paginator div:nth-last-child(2) {
+    margin-right: 0;
+}
