@@ -5,7 +5,7 @@ import './titles.css';
 import Title from './title';
 import SubTitle from './sub-title';
 
-function PageTitle({title, subtitle}) {
+function PageTitle({title, subtitle, isMobile}) {
   return (
     <div className="page-title">
       <Title text={title}/>

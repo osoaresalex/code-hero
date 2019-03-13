@@ -1,5 +1,6 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import Heroes from './heroes/heroes-duck';
+import Template from './template-duck';
 
 const NodeEnvDevelopment = 'development';
 
@@ -13,6 +14,7 @@ if (process.env.NODE_ENV.trim() === NodeEnvDevelopment) {
 export default createStore(
   combineReducers({
     Heroes,
+    Template,
   }),
   composeEnhancers(applyMiddleware()),
 );

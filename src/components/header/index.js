@@ -4,11 +4,14 @@ import './header.css';
 
 import {PageTitle, SubTitle} from "../title";
 
-function Header() {
+function Header({isMobile}) {
   return (
     <div className="header-container">
       <PageTitle title="busca marvel" subtitle="teste front-end"/>
-      <SubTitle text="nome do canditado"/>
+      {
+        !isMobile &&
+        <SubTitle text="nome do canditado"/>
+      }
     </div>
   )
 }

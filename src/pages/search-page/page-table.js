@@ -2,7 +2,7 @@ import React from 'react';
 import Table from "../../components/table";
 import HeroCard from "../../components/hero-card";
 
-function PageTable({heroes, history}) {
+function PageTable({heroes, history, isMobile}) {
   const columns = [
     {
       label: 'Personagem',
@@ -10,13 +10,21 @@ function PageTable({heroes, history}) {
     },
     {
       label: 'Séries',
-      renderFunction: (data) => data.series.map(serie => <div key={Math.floor(Math.random() * 1000) } className="color-black roboto-regular">{serie}</div>),
+      renderFunction: (data) => data.series.map(serie => <div key={Math.floor(Math.random() * 1000)}
+                                                              className="color-black roboto-regular">{serie}</div>),
     },
     {
       label: 'Eventos',
-      renderFunction: (data) => data.events.map(event => <div key={Math.floor(Math.random() * 1000) }  className="color-black roboto-regular">{event}</div>),
+      renderFunction: (data) => data.events.map(event => <div key={Math.floor(Math.random() * 1000)}
+                                                              className="color-black roboto-regular">{event}</div>),
     },
   ];
+
+  if(isMobile) {
+    delete columns[1];
+    delete columns[2];
+  }
+
   return (
     <Table columns={columns} registers={heroes} onRowClick={(data) => history.push('/details')}/>
   )

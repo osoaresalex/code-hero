@@ -5,3 +5,12 @@
     width: 100%;
     margin-bottom: 34px;
 }
+
+@media all and (max-width: 1000px) {
+    .header-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin: 12px 0 12px 30px;
+    }
+}
