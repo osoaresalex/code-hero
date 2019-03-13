@@ -12,6 +12,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={SearchPage}/>
           <Route path="/details" component={DetailsPage}/>
+          <Route exact path="/code-hero/" component={SearchPage}/>
+          <Route path="/code-hero/details" component={DetailsPage}/>
         </Switch>
       </Router>
     </Template>
