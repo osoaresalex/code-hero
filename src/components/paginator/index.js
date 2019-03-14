@@ -19,17 +19,21 @@ function Paginator({offset, totalPages, isMobile, onPaginate}) {
 
   function render() {
     const elements = [];
-    let limit = isMobile ? 3 : 6;
+    let navigationLimit = totalPages < 6 ? totalPages : 5;
 
-    limit += index;
+    navigationLimit = isMobile && navigationLimit > 2 ? 2 : navigationLimit;
 
-    if (offset >= limit) {
-      setIndex(index + 1);
+    if (offset > navigationLimit + index) {
+      setIndex(offset - navigationLimit);
     }
 
-    return pages.slice(index, limit).map(page => <PageNumber key={page} isActive={offset === page}
-                                                             onClickHandler={() => onPaginate(page)}
-                                                             number={page + 1}/>);
+    if (offset < index) {
+      setIndex(index - 1);
+    }
+
+    return pages.slice(index, navigationLimit + 1 + index).map(page => <PageNumber key={page} isActive={offset === page}
+                                                                                   onClickHandler={() => onPaginate(page)}
+                                                                                   number={page + 1}/>);
   }
 
   const styles = {
@@ -41,10 +45,10 @@ function Paginator({offset, totalPages, isMobile, onPaginate}) {
 
   return (
     <div className="paginator" style={styles.container}>
-      <CaretLeft isEnable={index > 0} onClickHandler={() => onPaginate(offset - 1)
+      <CaretLeft isEnable={offset > 0} onClickHandler={() => onPaginate(offset - 1)
       }/>
       {render()}
-      <CaretRight isEnable={true} onClickHandler={() => onPaginate(offset + 1)}/>
+      <CaretRight isEnable={offset+1 !== totalPages} onClickHandler={() => onPaginate(offset + 1)}/>
     </div>
   );
 }

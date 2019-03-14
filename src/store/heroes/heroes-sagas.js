@@ -11,12 +11,15 @@ const getHeroesState = (state) => state.Heroes;
 
 function* fetchHeroes() {
   try {
-
     const state = yield select(getHeroesState);
 
     yield hash.update(timestamp + '5cb82d4d6de8ff209bd7e6b3732cf258cadd59e38753d3f72d17692c327806bc8a360493');
+
+    const filterByName = state.name ? `&nameStartsWith=${state.name}` : '';
+    let offset = state.limit * state.offset;
+
     const response = yield call(fetch,
-      `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=${state.limit}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`
+      `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&${filterByName}&orderBy=name&limit=${state.limit}&offset=${offset}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`
     );
     const responseBody = yield response.json();
 
@@ -29,6 +32,12 @@ function* fetchHeroes() {
   }
 }
 
+function* paginate({offset}) {
+  yield put(Creators.onPaginate(offset));
+  yield fetchHeroes();
+}
+
 export default [
   takeLatest(Types.FETCH_HEROES_ASYNC, fetchHeroes),
+  takeLatest(Types.ON_PAGINATE_ASYNC, paginate),
 ];

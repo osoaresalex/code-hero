@@ -9,8 +9,7 @@ function HeroCard({image, name}) {
       alignItems: 'center',
     },
     image: {
-      background: `url("${image}") center center no-repeat`,
-      backgroundSize: 'cover',
+      background: `url("${image}") center center / cover no-repeat`,
       borderRadius: '50%',
       marginRight: pixelToRem(25),
       width: pixelToRem(58),

@@ -4,11 +4,12 @@ import {createReducer, createActions, Types as defaultypes} from 'reduxsauce';
 const DEFAULT_STATE = {
   heroes: [],
   limit: window.innerWidth < 1100 ? 4 : 3,
-  totalPages: 1140,
+  totalPages: 0,
   offset: 0,
   totalItems: 0,
+  name: 'spider',
   hero: {
-    name: '',
+    name: 'spider',
     description: '',
     thumbnail: '',
     events: [],
@@ -22,7 +23,7 @@ export function defaultHandler(state) {
 }
 
 export function onFetched(state, {totalItems, heroes}) {
-  const totalPages = Math.floor(totalItems / state.limit);
+  const totalPages = Math.round(totalItems / state.limit);
   return {...state, heroes, totalItems, totalPages};
 }
 
@@ -40,6 +41,7 @@ export const {Types, Creators} = createActions({
   fetchHeroesAsync: [],
   fetchedHeroes: ['totalItems', 'heroes'],
   changeLimit: [],
+  onPaginateAsync: ['offset'],
   onPaginate: ['offset'],
 });
 

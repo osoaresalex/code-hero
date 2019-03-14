@@ -19,7 +19,7 @@ function SearchPage(
     offset,
     totalPages,
     fetchHeroesAsync,
-    onPaginate,
+    onPaginateAsync,
   }) {
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function SearchPage(
     <div className="search-page">
       <SearchInput isMobile={isMobile} searchHandler={() => false} label="Nome do Personagem" id="hero-search"/>
       <PageTable heroes={heroes} history={history} isMobile={isMobile}/>
-      <Paginator onPaginate={onPaginate} offset={offset} totalPages={totalPages} isMobile={isMobile}/>
+      <Paginator onPaginate={onPaginateAsync} offset={offset} totalPages={totalPages} isMobile={isMobile}/>
     </div>
   );
 }
