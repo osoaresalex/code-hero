@@ -2,7 +2,7 @@ import {createReducer, createActions, Types as defaultypes} from 'reduxsauce';
 
 const DEFAULT_STATE = {
   windowWidth: window.innerWidth,
-  isMobile: window.innerWidth < 1200,
+  isMobile: window.innerWidth < 1100,
 };
 
 export function defaultHandler(state) {

@@ -1,9 +1,12 @@
-import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
-import Heroes from './heroes/heroes-duck';
-import Template from './template-duck';
+import {createStore, applyMiddleware, compose} from 'redux';
+import createSagaMiddleware from 'redux-saga';
+
+import Reducers from './reducers-config'
+import RootSagas from './saga-config';
+
 
 const NodeEnvDevelopment = 'development';
-
+const sagaMiddleware = createSagaMiddleware();
 
 let composeEnhancers = compose;
 
@@ -12,11 +15,10 @@ if (process.env.NODE_ENV.trim() === NodeEnvDevelopment) {
 }
 
 export default createStore(
-  combineReducers({
-    Heroes,
-    Template,
-  }),
-  composeEnhancers(applyMiddleware()),
+  Reducers,
+  composeEnhancers(applyMiddleware(sagaMiddleware)),
 );
+
+sagaMiddleware.run(RootSagas);
 
 

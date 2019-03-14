@@ -1,25 +1,33 @@
 import React from 'react';
-import './hero-card.css';
-
-import ironman from '../../resources/ironman.jpg';
+import {pixelToRem, fonts} from "../../template/template-params";
 
 function HeroCard({image, name}) {
   const styles = {
-    background: `url("${image}") center center no-repeat`,
-    backgroundSize: 'cover',
+    container: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    image: {
+      background: `url("${image}") center center no-repeat`,
+      backgroundSize: 'cover',
+      borderRadius: '50%',
+      marginRight: pixelToRem(25),
+      width: pixelToRem(58),
+      height: pixelToRem(58),
+    },
+    text: {
+      ...fonts.text
+    }
+
   };
 
   return (
-    <div className="hero-card">
-      <div className="hero-card__image" style={styles}/>
-      <span className="hero-card__name color-black roboto-regular">{name}</span>
+    <div style={styles.container}>
+      <div style={styles.image}/>
+      <span style={styles.text}>{name}</span>
     </div>
   );
 }
-
-HeroCard.defaultProps = {
-  image: ironman,
-  name: 'Tony Stark'
-};
 
 export default HeroCard;

@@ -1,25 +1,29 @@
 import React from 'react';
 import "./table.css";
-import {pixelToRem, fonts, fontsMobile, colors} from "../../template/template-params";
+import {pixelToRem, fonts, colors} from "../../template/template-params";
 
 function Table({columns, registers, onRowClick, isMobile}) {
-  const padding = isMobile ?
-    `${pixelToRem(12)} 0 ${pixelToRem(12)} ${pixelToRem(14)}`
+  const textPadding = isMobile ?
+    `${pixelToRem(18)} 0 ${pixelToRem(18)} ${pixelToRem(14)}`
     : `${pixelToRem(20)} 0 ${pixelToRem(20)} ${pixelToRem(14)}`;
-  const
-    styles = {
-      text: {
-        ...fonts.text,
-        padding,
-        borderBottom: `${isMobile ? pixelToRem(1) : pixelToRem(2)} solid ${colors.primary}`,
-      },
-      header: {
-        ...fonts.header,
-        backgroundColor:
-        colors.primary,
-      }
+
+  const headerPadding =  isMobile?
+    `${pixelToRem(10)} 0 ${pixelToRem(10)} 6.2rem`
+    : `${pixelToRem(10)} 0 ${pixelToRem(10)} ${pixelToRem(14)}`;
+
+  const styles = {
+    text: {
+      ...fonts.text,
+      padding: textPadding,
+      borderBottom: `${isMobile ? pixelToRem(1) : pixelToRem(2)} solid ${colors.primary}`,
+    },
+    header: {
+      ...fonts.header,
+      backgroundColor:
+      colors.primary,
+      padding: headerPadding,
     }
-  ;
+  };
 
   function renderRow(register, columns, registerIndex) {
     return columns

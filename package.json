@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://nelsonlpco.github.io/code-hero",
   "dependencies": {
+    "js-md5": "^0.7.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",

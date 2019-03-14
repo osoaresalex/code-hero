@@ -1,47 +1,51 @@
 import {createReducer, createActions, Types as defaultypes} from 'reduxsauce';
 
+
 const DEFAULT_STATE = {
-  heroes: [
-    {
-      name: 'Tony Stark',
-      image: 'https://helpx.adobe.com/in/stock/how-to/visual-reverse-image-search/_jcr_content/main-pars/image.img.jpg/visual-reverse-image-search-v2_1000x560.jpg',
-      series: ['Invincible Iron man', 'Civil War', 'IronHeart'],
-      events: ['AvX', 'Demon in the Bottle', 'Dynasty M'],
-    },
-    {
-      name: 'Tony Stark',
-      image: 'https://helpx.adobe.com/in/stock/how-to/visual-reverse-image-search/_jcr_content/main-pars/image.img.jpg/visual-reverse-image-search-v2_1000x560.jpg',
-      series: ['Invincible Iron man', 'Civil War', 'IronHeart'],
-      events: ['AvX', 'Demon in the Bottle', 'Dynasty M'],
-    },
-    {
-      name: 'Tony Stark',
-      image: 'https://helpx.adobe.com/in/stock/how-to/visual-reverse-image-search/_jcr_content/main-pars/image.img.jpg/visual-reverse-image-search-v2_1000x560.jpg',
-      series: ['Invincible Iron man', 'Civil War', 'IronHeart'],
-      events: ['AvX', 'Demon in the Bottle', 'Dynasty M'],
-    },
-    {
-      name: 'Tony Stark',
-      image: 'https://helpx.adobe.com/in/stock/how-to/visual-reverse-image-search/_jcr_content/main-pars/image.img.jpg/visual-reverse-image-search-v2_1000x560.jpg',
-      series: ['Invincible Iron man', 'Civil War', 'IronHeart'],
-      events: ['AvX', 'Demon in the Bottle', 'Dynasty M'],
-    },
-  ]
+  heroes: [],
+  limit: window.innerWidth < 1100 ? 4 : 3,
+  totalPages: 1140,
+  offset: 0,
+  totalItems: 0,
+  hero: {
+    name: '',
+    description: '',
+    thumbnail: '',
+    events: [],
+    series: [],
+  }
+
 };
 
 export function defaultHandler(state) {
   return {...state};
 }
 
-export function fetch(state, action) {
-  return {...state};
+export function onFetched(state, {totalItems, heroes}) {
+  const totalPages = Math.floor(totalItems / state.limit);
+  return {...state, heroes, totalItems, totalPages};
+}
+
+export function onChangeLimit(state) {
+  const isMobile = window.innerWidth < 1100;
+  const limit = isMobile ? 4 : 3;
+  return {...state, limit};
+}
+
+export function paginate(state, {offset}) {
+  return {...state, offset};
 }
 
 export const {Types, Creators} = createActions({
-  fetchHeroes: [],
+  fetchHeroesAsync: [],
+  fetchedHeroes: ['totalItems', 'heroes'],
+  changeLimit: [],
+  onPaginate: ['offset'],
 });
 
 export default createReducer(DEFAULT_STATE, {
   [defaultypes.DEFAULT]: defaultHandler,
-  [Types.FETCH_HEROES]: fetch,
+  [Types.FETCHED_HEROES]: onFetched,
+  [Types.CHANGE_LIMIT]: onChangeLimit,
+  [Types.ON_PAGINATE]: paginate,
 });

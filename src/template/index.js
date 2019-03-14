@@ -2,15 +2,22 @@ import React, {useEffect} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Creators} from '../store/template-duck';
+import {Creators as HeroCreators} from '../store/heroes/heroes-duck';
 
 import Header from "../components/header";
 import Footer from "../components/footer";
 
-function MainPage({children, isMobile, onWindowResize}) {
+function MainPage({children, isMobile, onWindowResize, changeLimit}) {
   useEffect(() => {
-    window.addEventListener('resize', onWindowResize);
+    window.addEventListener('resize', () => {
+      onWindowResize();
+      changeLimit()
+    });
 
-    return (() => window.removeEventListener('resize', onWindowResize));
+    return (() => window.removeEventListener('resize', () => {
+      changeLimit();
+      onWindowResize();
+    }));
   }, []);
 
   const styles = {
@@ -42,6 +49,6 @@ const mapStateToProps = state => ({
   isMobile: state.Template.isMobile,
 });
 
-const mapDispatchToActions = dispatch => bindActionCreators(Creators, dispatch);
+const mapDispatchToActions = dispatch => bindActionCreators({...Creators, ...HeroCreators}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToActions)(MainPage);
