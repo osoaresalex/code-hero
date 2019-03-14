@@ -20,6 +20,12 @@ const DEFAULT_STATE = {
       series: ['Invincible Iron man', 'Civil War', 'IronHeart'],
       events: ['AvX', 'Demon in the Bottle', 'Dynasty M'],
     },
+    {
+      name: 'Tony Stark',
+      image: 'https://helpx.adobe.com/in/stock/how-to/visual-reverse-image-search/_jcr_content/main-pars/image.img.jpg/visual-reverse-image-search-v2_1000x560.jpg',
+      series: ['Invincible Iron man', 'Civil War', 'IronHeart'],
+      events: ['AvX', 'Demon in the Bottle', 'Dynasty M'],
+    },
   ]
 };
 

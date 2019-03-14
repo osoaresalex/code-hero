@@ -5,8 +5,7 @@ import SearchInput from "../../components/form/input";
 import PageTable from "./page-table";
 import Paginator from "../../components/paginator";
 
-import "./search-page.css";
-
+import "./page-search.css";
 
 function SearchPage({history, heroes, isMobile}) {
   function showDetails() {
@@ -15,7 +14,7 @@ function SearchPage({history, heroes, isMobile}) {
 
   return (
     <div className="search-page">
-      <SearchInput searchHandler={() => false} label="Nome do Personagem" id="hero-search"/>
+      <SearchInput isMobile={isMobile} searchHandler={() => false} label="Nome do Personagem" id="hero-search"/>
       <PageTable heroes={heroes} history={history} isMobile={isMobile}/>
       <Paginator/>
     </div>

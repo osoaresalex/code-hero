@@ -26,7 +26,7 @@ function PageTable({heroes, history, isMobile}) {
   }
 
   return (
-    <Table columns={columns} registers={heroes} onRowClick={(data) => history.push('/details')}/>
+    <Table isMobile={isMobile} columns={columns} registers={heroes} onRowClick={(data) => history.push('/details')}/>
   )
 }
 

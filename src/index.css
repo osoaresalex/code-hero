@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,900');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body {
     font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -18,7 +20,7 @@ body {
     font-size: 16px;
 }
 
-#root{
+#root {
     display: flex;
     flex: 1;
 }
@@ -53,4 +55,3 @@ body {
 .color-white {
     color: #ffffff;
 }
-
