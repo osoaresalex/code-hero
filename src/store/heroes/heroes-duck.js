@@ -1,5 +1,4 @@
-import {createReducer, createActions, Types as defaultypes} from 'reduxsauce';
-
+import { createReducer, createActions, Types as defaultypes } from 'reduxsauce';
 
 const DEFAULT_STATE = {
   heroes: [],
@@ -7,42 +6,68 @@ const DEFAULT_STATE = {
   totalPages: 0,
   offset: 0,
   totalItems: 0,
-  name: 'spider',
-  hero: {
-    name: 'spider',
-    description: '',
-    thumbnail: '',
-    events: [],
-    series: [],
-  }
-
+  name: '',
+  selectedHero: {
+    comics: {
+      "items": [
+      ],
+    },
+    descriptio: "",
+    events: {
+      "items": [],
+    },
+    id: 0,
+    name: "",
+    series: {
+      items: [],
+    },
+    stories: {
+      items: [],
+    },
+    thumbnail: {
+      "path": "",
+      "extension": ""
+    },
+    urls: [],
+  },
 };
 
 export function defaultHandler(state) {
-  return {...state};
+  return { ...state };
 }
 
-export function onFetched(state, {totalItems, heroes}) {
+export function onFetched(state, { totalItems, heroes }) {
   const totalPages = Math.round(totalItems / state.limit);
-  return {...state, heroes, totalItems, totalPages};
+  return { ...state, heroes, totalItems, totalPages };
 }
 
 export function onChangeLimit(state) {
   const isMobile = window.innerWidth < 1100;
   const limit = isMobile ? 4 : 3;
-  return {...state, limit};
+  return { ...state, limit };
 }
 
-export function paginate(state, {offset}) {
-  return {...state, offset};
+export function paginate(state, { offset }) {
+  return { ...state, offset };
 }
 
-export const {Types, Creators} = createActions({
+export function changeFilterName(state, { name }) {
+  return { ...state, name };
+}
+
+export function selectHero(state, { selectedHero }) {
+  return { ...state, selectedHero }
+}
+
+export const { Types, Creators } = createActions({
   fetchHeroesAsync: [],
   fetchedHeroes: ['totalItems', 'heroes'],
   changeLimit: [],
   onPaginateAsync: ['offset'],
   onPaginate: ['offset'],
+  onFilterAsync: ['name'],
+  changeFilterName: ['name'],
+  selectHero: ['selectedHero'],
 });
 
 export default createReducer(DEFAULT_STATE, {
@@ -50,4 +75,6 @@ export default createReducer(DEFAULT_STATE, {
   [Types.FETCHED_HEROES]: onFetched,
   [Types.CHANGE_LIMIT]: onChangeLimit,
   [Types.ON_PAGINATE]: paginate,
+  [Types.CHANGE_FILTER_NAME]: changeFilterName,
+  [Types.SELECT_HERO]: selectHero,
 });

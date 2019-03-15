@@ -1,15 +1,33 @@
 import React from 'react';
-import {PropTypes} from 'prop-types';
+import { PropTypes } from 'prop-types';
 
-function PageNumber({isActive, onClickHandler, number}) {
-  const bgcolor = isActive ? '#d42026' : '#FFF';
-  const color = isActive ? '#fff' : '#d42026';
+import { colors, fonts, pixelToRem } from "../../template/template-params";
+
+function PageNumber({ isActive, onClickHandler, number }) {
+
+  const bgcolor = isActive ? colors.primary : colors.white;
+
+  const color = isActive ? colors.white : colors.primary;
+
   const styles = {
-    backgroundColor: bgcolor,
-    color: color,
+    number: {
+      backgroundColor: bgcolor,
+      color: color,
+      width: pixelToRem(32),
+      height: pixelToRem(32),
+      borderRadius: '50%',
+      border: `solid 1px ${colors.primary}`,
+      ...fonts.pageNumber,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      cursor: 'pointer',
+      marginRight: '20px',
+    }
   };
+
   return (
-    <div className="page-number" style={styles} onClick={() => {
+    <div className="page-number" style={styles.number} onClick={() => {
       onClickHandler();
     }}>
       {number}

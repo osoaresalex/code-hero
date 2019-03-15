@@ -1,24 +1,33 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { PropTypes } from 'prop-types';
+
 import "./paginator.css";
 import CaretLeft from "./caret-left";
 import CaretRight from "./caret-right";
 import PageNumber from "./page-number";
-import {pixelToRem} from "../../template/template-params";
 
-function Paginator({offset, totalPages, isMobile, onPaginate}) {
+function Paginator(
+  {
+    offset,
+    totalPages,
+    isMobile,
+    onPaginate,
+  }) {
+
   const [pages, setPages] = useState([]);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const pages = [];
+
     for (let i = 0; i < totalPages; i++) {
       pages.push(i);
     }
+
     setPages(pages);
   }, [totalPages]);
 
   function render() {
-    const elements = [];
     let navigationLimit = totalPages < 6 ? totalPages : 5;
 
     navigationLimit = isMobile && navigationLimit > 2 ? 2 : navigationLimit;
@@ -31,26 +40,45 @@ function Paginator({offset, totalPages, isMobile, onPaginate}) {
       setIndex(index - 1);
     }
 
-    return pages.slice(index, navigationLimit + 1 + index).map(page => <PageNumber key={page} isActive={offset === page}
-                                                                                   onClickHandler={() => onPaginate(page)}
-                                                                                   number={page + 1}/>);
+    return pages
+      .slice(index, navigationLimit + 1 + index)
+      .map(page => (
+        <PageNumber key={page} isActive={offset === page}
+          onClickHandler={() => onPaginate(page)}
+          number={page + 1} />)
+      );
   }
 
   const styles = {
-    container: {
-      marginBottom: pixelToRem(24),
-      marginTop: pixelToRem(18),
-    },
-  };
+    display: 'flex',
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
 
   return (
-    <div className="paginator" style={styles.container}>
-      <CaretLeft isEnable={offset > 0} onClickHandler={() => onPaginate(offset - 1)
-      }/>
+    <div className="paginator" style={styles}>
+      <CaretLeft
+        isEnable={offset > 0}
+        isMobile={isMobile}
+        onClickHandler={() => onPaginate(offset - 1)}
+      />
       {render()}
-      <CaretRight isEnable={offset+1 !== totalPages} onClickHandler={() => onPaginate(offset + 1)}/>
+      <CaretRight
+        isEnable={offset + 1 !== totalPages}
+        isMobile={isMobile}
+        onClickHandler={() => onPaginate(offset + 1)}
+      />
     </div>
   );
+}
+
+Paginator.defaultProps = {
+  offset: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  isMobile: PropTypes.number.isRequired,
+  onPaginate: PropTypes.func.isRequired,
 }
 
 export default Paginator;

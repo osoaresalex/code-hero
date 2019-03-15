@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import React, { useEffect } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import {Creators} from '../../store/heroes/heroes-duck';
+import { Creators } from '../../store/heroes/heroes-duck';
 
 import SearchInput from "../../components/form/input";
 import PageTable from "./page-table";
@@ -18,8 +18,11 @@ function SearchPage(
     limit,
     offset,
     totalPages,
+    filter,
+    selectHero,
     fetchHeroesAsync,
     onPaginateAsync,
+    onFilterAsync,
   }) {
 
   useEffect(() => {
@@ -28,9 +31,9 @@ function SearchPage(
 
   return (
     <div className="search-page">
-      <SearchInput isMobile={isMobile} searchHandler={() => false} label="Nome do Personagem" id="hero-search"/>
-      <PageTable heroes={heroes} history={history} isMobile={isMobile}/>
-      <Paginator onPaginate={onPaginateAsync} offset={offset} totalPages={totalPages} isMobile={isMobile}/>
+      <SearchInput filter={filter}  isMobile={isMobile} searchHandler={onFilterAsync} label="Nome do Personagem" id="hero-search" />
+      <PageTable heroes={heroes} history={history} isMobile={isMobile} selectHandler={selectHero} />
+      <Paginator onPaginate={onPaginateAsync} offset={offset} totalPages={totalPages} isMobile={isMobile} />
     </div>
   );
 }
@@ -41,6 +44,7 @@ const mapStateToProps = state => ({
   limit: state.Heroes.limit,
   offset: state.Heroes.offset,
   totalPages: state.Heroes.totalPages,
+  filter: state.Heroes.name,
 });
 
 const mapDispatchToCreators = dispatch => bindActionCreators(Creators, dispatch);

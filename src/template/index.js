@@ -1,13 +1,22 @@
-import React, {useEffect} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Creators} from '../store/template-duck';
-import {Creators as HeroCreators} from '../store/heroes/heroes-duck';
+import React, { useEffect, Fragment } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Creators } from '../store/template-duck';
+import { Creators as HeroCreators } from '../store/heroes/heroes-duck';
 
 import Header from "../components/header";
 import Footer from "../components/footer";
+import Loader from '../components/loader';
 
-function MainPage({children, isMobile, onWindowResize, changeLimit}) {
+function MainPage(
+  {
+    children,
+    isMobile,
+    onWindowResize,
+    changeLimit,
+    isLoading,
+  }) {
+
   useEffect(() => {
     window.addEventListener('resize', () => {
       onWindowResize();
@@ -35,20 +44,24 @@ function MainPage({children, isMobile, onWindowResize, changeLimit}) {
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.pageContainer}>
-        <Header isMobile={isMobile}/>
-        {children}
+    <Fragment>
+      <Loader isVisible={isLoading} />
+      <div style={styles.container}>
+        <div style={styles.pageContainer}>
+          <Header isMobile={isMobile} />
+          {children}
+        </div>
+        <Footer />
       </div>
-      <Footer/>
-    </div>
+    </Fragment>
   );
 }
 
 const mapStateToProps = state => ({
   isMobile: state.Template.isMobile,
+  isLoading: state.Template.isLoading,
 });
 
-const mapDispatchToActions = dispatch => bindActionCreators({...Creators, ...HeroCreators}, dispatch);
+const mapDispatchToActions = dispatch => bindActionCreators({ ...Creators, ...HeroCreators }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToActions)(MainPage);

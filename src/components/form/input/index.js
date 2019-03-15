@@ -1,9 +1,35 @@
-import React, {useState, useEffect} from 'react';
-import {PropTypes} from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import { PropTypes } from 'prop-types';
 import "./search-input.css";
-import {pixelToRem, fonts, fontsMobile, colors} from "../../../template/template-params";
+import { pixelToRem, fonts, colors } from "../../../template/template-params";
 
-function SearchInput({label, id, searchHandler, isMobile}) {
+const WAIT_INTERVAL = 1000;
+const ENTER_KEY = 13;
+const TAB_KEY = 9;
+
+let timer = null;
+
+function SearchInput({ label, id, searchHandler, isMobile, filter}) {
+  const [value, setValue] = useState('');
+
+  useEffect(function startInternalValue(){
+    setValue(filter);
+  },[filter])
+
+  useEffect(function addTrigger() {
+    clearTimer();
+    timer = setTimeout(triggerChange, WAIT_INTERVAL);
+  }, [value]);
+
+  const handleKeyDown = event => event.keyCode === ENTER_KEY || event.keyCode === TAB_KEY ? triggerChange() : null;
+
+  const clearTimer = () => timer ? clearTimeout(timer) : false;
+
+  const triggerChange = () => {
+    clearTimer();
+    searchHandler(value);
+  };
+
   const styles = {
     container: {
       marginLeft: isMobile ? pixelToRem(30) : undefined,
@@ -24,21 +50,16 @@ function SearchInput({label, id, searchHandler, isMobile}) {
     },
   };
 
-  const [value, setValue] = useState('');
-
-  function onChangeHandler(event) {
-    setValue(event.target.value);
-  }
-
   return (
     <div style={styles.container}>
       <label style={styles.label} htmlFor={id}>{label}</label>
       <input autoFocus
-             style={styles.input}
-             className="search__input"
-             id={id} name={id}
-             type="text" value={value}
-             onChange={onChangeHandler}/>
+        style={styles.input}
+        className="search__input"
+        id={id} name={id}
+        type="text" value={value}
+        onKeyDown={handleKeyDown}
+        onChange={e => setValue(e.target.value)} />
     </div>
   );
 }
