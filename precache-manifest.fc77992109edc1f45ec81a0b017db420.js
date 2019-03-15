@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "ca899bb040250e6f75a8",
+    "revision": "05a6d6f2d319ef0c50a1",
     "url": "/code-hero/static/css/main.b260f6d3.chunk.css"
   },
   {
-    "revision": "ca899bb040250e6f75a8",
-    "url": "/code-hero/static/js/main.405206e6.chunk.js"
+    "revision": "05a6d6f2d319ef0c50a1",
+    "url": "/code-hero/static/js/main.2fad447b.chunk.js"
   },
   {
     "revision": "6561509a09ef762987df",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/code-hero/static/js/2.26aa3caa.chunk.js"
   },
   {
-    "revision": "080504c2dd3747b5d090c09e4f486bd7",
+    "revision": "df32ca62a7063c9a74a547c09933cbde",
     "url": "/code-hero/index.html"
   }
 ];
