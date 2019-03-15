@@ -20,7 +20,7 @@ function Header({isMobile}) {
       <PageTitle title="busca marvel" subtitle="teste front-end" isMobile={isMobile}/>
       {
         !isMobile &&
-        <SubTitle text="nome do candidato" isMobile={isMobile}/>
+        <SubTitle text="nelson oliveira" isMobile={isMobile}/>
       }
     </div>
   )
