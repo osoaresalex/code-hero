@@ -4,7 +4,7 @@ import {pixelToRem, fonts, colors} from "../../template/template-params";
 
 function Table({columns, registers, onRowClick, isMobile}) {
   const textPadding = isMobile ?
-    `${pixelToRem(18)} 0 ${pixelToRem(18)} ${pixelToRem(14)}`
+    `${pixelToRem(16)} 0 ${pixelToRem(16)} ${pixelToRem(14)}`
     : `${pixelToRem(20)} 0 ${pixelToRem(20)} ${pixelToRem(14)}`;
 
   const headerPadding =  isMobile?

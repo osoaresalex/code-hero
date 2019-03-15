@@ -31,9 +31,12 @@ function SearchPage(
 
   return (
     <div className="search-page">
-      <SearchInput filter={filter}  isMobile={isMobile} searchHandler={onFilterAsync} label="Nome do Personagem" id="hero-search" />
+      <SearchInput filter={filter} isMobile={isMobile} searchHandler={onFilterAsync} label="Nome do Personagem" id="hero-search" />
       <PageTable heroes={heroes} history={history} isMobile={isMobile} selectHandler={selectHero} />
-      <Paginator onPaginate={onPaginateAsync} offset={offset} totalPages={totalPages} isMobile={isMobile} />
+      {
+        heroes.length > 0 &&
+        <Paginator onPaginate={onPaginateAsync} offset={offset} totalPages={totalPages} isMobile={isMobile} />
+      }
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import BackButton from '../../components/buttons/back-button';
 
