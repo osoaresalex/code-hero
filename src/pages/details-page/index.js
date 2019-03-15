@@ -12,12 +12,6 @@ import HeroDescription from './hero-description';
 import './details-page.css';
 
 function DetailsPage({ history, hero, isMobile }) {
-
-  useEffect(() => {
-    if (!hero)
-      history.push('/');
-  });
-
   const fontName = isMobile ? fontsMobile.title : fonts.title;
 
   const styles = {
@@ -33,7 +27,7 @@ function DetailsPage({ history, hero, isMobile }) {
 
   return (
     <div className="details-page" style={isMobile ? styles.mobileContainer : undefined}>
-      <BackButton onCLickHandler={() => history.push('/')} />
+      <BackButton onCLickHandler={() => history.push('/code-hero/')} />
 
       <div className={isMobile ? 'details-page__mobile' : 'details-page__grid'}>
 

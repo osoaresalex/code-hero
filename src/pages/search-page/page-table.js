@@ -34,7 +34,7 @@ function PageTable(
   }
 
   return (
-    <Table isMobile={isMobile} columns={columns} registers={heroes} onRowClick={(data) => { selectHandler(data); history.push('/details') }} />
+    <Table isMobile={isMobile} columns={columns} registers={heroes} onRowClick={(data) => { selectHandler(data); history.push('/code-hero/details') }} />
   )
 }
 

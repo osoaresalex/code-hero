@@ -44,7 +44,7 @@ export function onFetched(state, { totalItems, heroes }) {
 export function onChangeLimit(state) {
   const isMobile = window.innerWidth < 1100;
   const limit = isMobile ? 4 : 3;
-  return { ...state, limit };
+  return { ...state, limit, offset: 0 };
 }
 
 export function paginate(state, { offset }) {
@@ -52,7 +52,7 @@ export function paginate(state, { offset }) {
 }
 
 export function changeFilterName(state, { name }) {
-  return { ...state, name };
+  return { ...state, name, offset: 0 };
 }
 
 export function selectHero(state, { selectedHero }) {
