@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/code-hero/static/js/2.26aa3caa.chunk.js"
   },
   {
-    "revision": "21c34cae09cd43b54c9749aa29440c46",
+    "revision": "080504c2dd3747b5d090c09e4f486bd7",
     "url": "/code-hero/index.html"
   }
 ];
