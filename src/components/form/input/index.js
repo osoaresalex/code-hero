@@ -27,7 +27,9 @@ function SearchInput({ label, id, searchHandler, isMobile, filter}) {
 
   const triggerChange = () => {
     clearTimer();
-    searchHandler(value);
+    
+    if(value !== filter)
+      searchHandler(value);
   };
 
   const styles = {
