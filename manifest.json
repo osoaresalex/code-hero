@@ -28,7 +28,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/index.html",
+  "start_url": "/code-hero/",
   "display": "standalone",
   "background_color": "#D42026",
   "theme_color": "#D42026"
