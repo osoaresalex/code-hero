@@ -55,7 +55,7 @@ function SearchInput({ label, id, searchHandler, isMobile, filter}) {
   return (
     <div style={styles.container}>
       <label style={styles.label} htmlFor={id}>{label}</label>
-      <input autoFocus
+      <input
         style={styles.input}
         className="search__input"
         id={id} name={id}
