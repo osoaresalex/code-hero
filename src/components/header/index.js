@@ -17,10 +17,10 @@ function Header({isMobile}) {
 
   return (
     <div style={styles.container}>
-      <PageTitle title="busca marvel" subtitle="teste front-end" isMobile={isMobile}/>
+      <PageTitle title="OBJECTIVE" subtitle="-TEXTE FRONT-END" isMobile={isMobile}/>
       {
         !isMobile &&
-        <SubTitle text="nelson oliveira" isMobile={isMobile}/>
+        <SubTitle text="Alex Soares Paes" isMobile={isMobile}/>
       }
     </div>
   )
