@@ -17,7 +17,7 @@ function Header({isMobile}) {
 
   return (
     <div style={styles.container}>
-      <PageTitle title="OBJECTIVE" subtitle="-TEXTE FRONT-END" isMobile={isMobile}/>
+      <PageTitle title="OBJECTIVE" subtitle="-TESTE FRONT-END" isMobile={isMobile}/>
       {
         !isMobile &&
         <SubTitle text="Alex Soares Paes" isMobile={isMobile}/>
